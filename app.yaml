@@ -4,12 +4,13 @@ runtime: go
 api_version: go1
 
 handlers:
-- url: /stylesheets
-  static_dir: stylesheets
+- url: /
+  static_files: app/index.html
+  upload: app/client/index.html
 
-- url: /(.*\.(gif|png|jpg))$
-  static_files: static/\1
-  upload: static/.*\.(gif|png|jpg)$
+- url: /(.*\.(css|gif|png|jpg|ico|js|html))
+  static_files: app/client/\1
+  upload: app/client/(.*\.(css|gif|png|jpg|ico|js|html))
 
 - url: /.*
   script: _go_app
